@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Browser-Based Image Compression</title>
+	<meta name="description" content="Compress PNG, JPG, JPEG, and WebP images instantly inside your browser. Batch processing, local privacy.">
+	<style>		:root{--bg-gradient-start: #0f172a;--bg-gradient-end: #020617;--glass-bg: rgba(30, 41, 59, .45);--glass-border: rgba(255, 255, 255, .08);--text-primary: #f8fafc;--text-secondary: #94a3b8;--accent-color: #38bdf8;--accent-hover: #0ea5e9;--success-color: #10b981;--danger-color: #ef4444;--panel-item-bg: rgba(15, 23, 42, .6);--font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;--transition-smooth: all .3s cubic-bezier(.4, 0, .2, 1)}[data-theme=light]{--bg-gradient-start: #f1f5f9;--bg-gradient-end: #cbd5e1;--glass-bg: rgba(255, 255, 255, .65);--glass-border: rgba(15, 23, 42, .08);--text-primary: #0f172a;--text-secondary: #475569;--accent-color: #0284c7;--accent-hover: #0369a1;--panel-item-bg: rgba(255, 255, 255, .8)}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;font-family:var(--font-stack);font-size:16px;color:var(--text-primary)}body{background:linear-gradient(135deg,var(--bg-gradient-start),var(--bg-gradient-end));background-attachment:fixed;min-height:100vh;overflow-x:hidden;line-height:1.5}.container{width:100%;max-width:1200px;margin:0 auto;padding:0 1.5rem}.skip-link{position:absolute;top:-100px;left:20px;background:var(--accent-color);color:#fff;padding:.75rem 1.5rem;z-index:9999;border-radius:4px;transition:top .2s}.skip-link:focus{top:20px}.glass-card{background:var(--glass-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glass-border);border-radius:16px;padding:2rem;box-shadow:0 8px 32px #0003}.gradient-text{background:linear-gradient(90deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.accent-text{color:var(--accent-color)}.divider{border:0;border-top:1px solid var(--glass-border);margin:1.5rem 0}.badge{background:var(--accent-color);color:#fff;font-size:.75rem;padding:.25rem .5rem;border-radius:4px;font-weight:700}.hidden{display:none!important}.btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.75rem;font-weight:600;border-radius:8px;border:none;cursor:pointer;transition:var(--transition-smooth);text-decoration:none;gap:.5rem}.btn-primary{background:var(--accent-color);color:#fff}.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}.btn-secondary{background:transparent;border:1px solid var(--glass-border);color:var(--text-primary)}.btn-secondary:hover{background:var(--glass-border)}.btn-success{background:var(--success-color);color:#fff}.btn-success:hover{opacity:.9}.btn-danger{background:var(--danger-color);color:#fff;padding:.5rem 1rem;font-size:.875rem}.btn-full{width:100%;display:flex;margin-bottom:.75rem}.ripple{position:relative;overflow:hidden}.ripple-effect{position:absolute;border-radius:50%;background:#fff6;transform:scale(0);animation:ripple-animation .6s linear;pointer-events:none}@keyframes ripple-animation{to{transform:scale(4);opacity:0}}.main-header{background:#0f172a26;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--glass-border);position:sticky;top:0;z-index:100}.header-wrap{display:flex;align-items:center;justify-content:space-between;height:70px}.logo-area{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.25rem;text-decoration:none;color:var(--text-primary)}.nav-menu{display:flex;align-items:center;gap:2rem}.theme-btn{background:none;border:none;color:var(--text-primary);cursor:pointer;padding:.5rem;display:flex;align-items:center;justify-content:center}[data-theme=light] .sun-icon,[data-theme=dark] .moon-icon{display:none}.workspace-section{margin-top:3rem;margin-bottom:4rem}.workspace-layout{display:grid;grid-template-columns:350px 1fr;gap:2rem;margin-top:2rem}.drop-zone{border:2px dashed var(--glass-border);background:#0f172a33;text-align:center;cursor:pointer;transition:var(--transition-smooth);position:relative}.drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent-color);background:#38bdf80d}.file-hidden-input{display:none}.drop-zone-content{display:flex;flex-direction:column;align-items:center;padding:2.5rem 1rem}.icon-circle{width:80px;height:80px;border-radius:50%;background:var(--glass-bg);display:flex;align-items:center;justify-content:center;color:var(--accent-color);margin-bottom:1.5rem;box-shadow:inset 0 2px 4px #0000001a}.drop-zone h3{font-size:1.5rem;margin-bottom:.5rem}.browse-txt{color:var(--accent-color);font-weight:700}.file-specs-hint{font-size:.85rem;color:var(--text-secondary);margin-top:1rem}.setting-group{margin-bottom:1.5rem}.setting-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}.setting-group label{display:block;font-size:.9rem;font-weight:600;margin-bottom:.5rem;color:var(--text-primary)}.slider-input{width:100%;-webkit-appearance:none;background:var(--panel-item-bg);height:6px;border-radius:3px;outline:none}.slider-input::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent-color);cursor:pointer;transition:var(--transition-smooth)}.slider-input::-webkit-slider-thumb:hover{transform:scale(1.2)}.select-input,.num-input{width:100%;background:var(--panel-item-bg);border:1px solid var(--glass-border);padding:.75rem;border-radius:8px;color:var(--text-primary);outline:none}.checkbox-row{display:flex;align-items:center;gap:.5rem;cursor:pointer}.checkbox-input{width:16px;height:16px;accent-color:var(--accent-color)}.dimension-inputs{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.hidden-sub{display:none!important}.mt-3{margin-top:.75rem}.dashboard-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding:1.25rem 2rem}.pipeline-list{display:flex;flex-direction:column;gap:1rem}.pipeline-card{display:flex;flex-direction:column;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:12px;padding:1.25rem;transition:var(--transition-smooth)}.card-main-row{display:flex;align-items:center;gap:1.25rem;width:100%}.thumb-preview{width:64px;height:64px;border-radius:6px;object-fit:cover;background:#000;border:1px solid var(--glass-border)}.asset-meta{flex:1;min-width:0}.asset-title{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.asset-info-row{font-size:.85rem;color:var(--text-secondary);display:flex;gap:1rem;margin-top:.25rem}.card-actions-area{display:flex;align-items:center;gap:.75rem}.results-matrix-box{margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--glass-border);display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1rem}.metric-tile{background:var(--panel-item-bg);padding:.5rem .75rem;border-radius:6px;text-align:center}.metric-tile span{display:block;font-size:.75rem;color:var(--text-secondary)}.metric-tile strong{font-size:1rem;color:var(--text-primary)}.metric-tile.saved-accent{background:#10b98126;border:1px solid rgba(16,185,129,.3)}.metric-tile.saved-accent strong{color:var(--success-color)}.progress-container{width:100%;background:#ffffff1a;height:4px;border-radius:2px;margin-top:.75rem;overflow:hidden}.progress-bar-fill{height:100%;background:var(--accent-color);width:0%;transition:width .1s linear}.comparison-stage{margin-bottom:4rem}.stage-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}.btn-close{background:none;border:none;font-size:2rem;color:var(--text-secondary);cursor:pointer;transition:var(--transition-smooth)}.btn-close:hover{color:var(--text-primary)}.split-slider-container{position:relative;width:100%;height:500px;border-radius:8px;overflow:hidden;user-select:none;background:#111}.image-layer{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden}.image-layer img{width:100%;height:100%;object-fit:contain;pointer-events:none}.layer-after{width:50%;border-right:1px solid transparent}.view-tag{position:absolute;top:15px;padding:.4rem .8rem;background:#000000b3;font-size:.8rem;border-radius:4px;color:#fff;z-index:5;font-weight:700}.tag-left{left:15px}.tag-right{right:15px}.slider-handle{position:absolute;top:0;left:50%;width:4px;height:100%;background:#fff;cursor:ew-resize;z-index:10;transform:translate(-50%);display:flex;flex-direction:column;align-items:center;justify-content:center}.handle-line{flex:1;width:2px;background:#ffffff80}.handle-button{width:36px;height:36px;border-radius:50%;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px #0000004d}.hero-section{padding:5rem 0 3rem}.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}.hero-text h1{font-size:3.25rem;line-height:1.15;font-weight:800;margin-bottom:1.5rem}.hero-text p{font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;max-width:500px}.hero-actions{display:flex;gap:1rem}.hero-illustration{display:flex;justify-content:center;position:relative}.glass-art-card{width:340px;height:340px;position:relative;display:flex;align-items:center;justify-content:center}.art-circle-1{position:absolute;width:140px;height:140px;border-radius:50%;background:linear-gradient(45deg,#06b6d4,#3b82f6);top:10px;left:10px;z-index:1;filter:blur(4px)}.art-circle-2{position:absolute;width:180px;height:180px;border-radius:50%;background:linear-gradient(45deg,#ec4899,#8b5cf6);bottom:-10px;right:10px;z-index:1;filter:blur(6px)}.art-inner-card{position:relative;z-index:2;width:240px;padding:2.5rem 1.5rem;background:#ffffff0d;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.15);border-radius:24px;display:flex;flex-direction:column;align-items:center;box-shadow:0 20px 50px #0000004d}.skeleton-line{background:#ffffff1a;height:8px;border-radius:4px;margin-top:1rem}.skeleton-line.short{width:40%}.skeleton-line.long{width:80%}.toast-container{position:fixed;bottom:24px;right:24px;z-index:1000;display:flex;flex-direction:column;gap:.75rem}.toast-msg{background:#0f172ae6;color:#fff;padding:1rem 1.5rem;border-radius:8px;border-left:4px solid var(--accent-color);box-shadow:0 10px 25px #0000004d;transform:translateY(50px);opacity:0;animation:toast-in .3s forwards cubic-bezier(.175,.885,.32,1.275);font-weight:500;min-width:280px}.toast-msg.toast-error{border-left-color:var(--danger-color)}.toast-msg.toast-success{border-left-color:var(--success-color)}@keyframes toast-in{to{transform:translateY(0);opacity:1}}@media(max-width:1024px){.hero-text h1{font-size:2.75rem}.workspace-layout{grid-template-columns:1fr}.control-panel{position:sticky;top:90px;z-index:10}}@media(max-width:768px){.hero-grid{grid-template-columns:1fr;text-align:center;gap:2rem}.hero-text p{margin:0 auto 2.5rem}.hero-actions{justify-content:center}.hero-illustration{display:none}.card-main-row{flex-direction:column;align-items:flex-start}.card-actions-area{width:100%;justify-content:space-between;margin-top:1rem}.split-slider-container{height:350px}}
+	</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div id="toast-container" class="toast-container" aria-live="polite">
+</div>
+<header class="main-header">
+	<div class="container header-wrap">
+		<a href="#" class="logo-area" aria-label="ImageCompress"><svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 3H3v18h18V3zM8 12a2 2 0 100-4 2 2 0 000 4zM21 16l-5-5L5 21" /></svg><span>ImageCompress</span></a>
+		<nav class="nav-menu" aria-label="Primary Navigation">
+			<button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode"><svg class="sun-icon" width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" /></svg><svg class="moon-icon" width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg></button>
+		</nav>
+	</div>
+</header>
+<main id="main-content">
+<section class="hero-section">
+	<div class="container hero-grid">
+		<div class="hero-text">
+			<h1>
+				Compress Images <br>
+				<span class="gradient-text">Without Losing Quality</span>
+			</h1>
+			<p>
+				Optimized, lighting-fast compression for JPG, PNG, and WebP files directly in your browser. Complete privacy—files never leave your machine.
+			</p>
+			<div class="hero-actions">
+				<a href="#compressor-workspace" class="btn btn-primary ripple">Upload Images</a>
+			</div>
+		</div>
+		<div class="hero-illustration" aria-hidden="true">
+			<div class="glass-art-card">
+				<div class="art-circle-1">
+				</div>
+				<div class="art-circle-2">
+				</div>
+				<div class="art-inner-card">
+					<svg width="64" height="64" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14.899A7 7 0 1115.71 8h1.79a4.5 4.5 0 012.5 8.242M12 12v9m0-9l-3 3m3-3l3 3" /></svg>
+					<div class="skeleton-line short">
+					</div>
+					<div class="skeleton-line long">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="compressor-workspace" class="workspace-section container">
+	<div id="dropzone" class="drop-zone glass-card" tabindex="0" role="region" aria-label="Image Drop Zone">
+		<input type="file" id="file-input" class="file-hidden-input" multiple accept=".png, .jpg, .jpeg, .webp" aria-hidden="true">
+		<div class="drop-zone-content">
+			<div class="icon-circle">
+				<svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" /></svg>
+			</div>
+			<h3>
+				Drag & Drop your images here
+			</h3>
+			<p>
+				or <span class="browse-txt">browse files</span> from your computer
+			</p>
+			<span class="file-specs-hint">Supports JPEG, PNG, WebP up to 50MB. Clipboard pasting enabled.</span>
+		</div>
+	</div>
+	<div id="workspace-layout" class="workspace-layout hidden">
+		<aside class="control-panel glass-card">
+			<h2>
+				Compression Settings
+			</h2>
+			<form id="settings-form" onsubmit="event.preventDefault();">
+				<div class="setting-group">
+					<div class="setting-header">
+						<label for="param-quality">Compression Quality</label><span id="quality-val" class="badge">80%</span>
+					</div>
+					<input type="range" id="param-quality" min="0" max="100" value="80" class="slider-input">
+				</div>
+				<div class="setting-group">
+					<label for="param-format">Output Format</label>
+					<select id="param-format" class="select-input">
+						<option value="auto">Original Format (Auto)</option>
+						<option value="image/jpeg">JPEG</option>
+						<option value="image/png">PNG</option>
+						<option value="image/webp">WebP</option>
+					</select>
+				</div>
+				<hr class="divider">
+				<div class="setting-group">
+					<div class="checkbox-row">
+						<input type="checkbox" id="toggle-resize" class="checkbox-input">
+						<label for="toggle-resize">Resize Dimensions</label>
+					</div>
+				</div>
+				<div id="resize-suboptions" class="resize-suboptions hidden-sub">
+					<div class="dimension-inputs">
+						<div class="input-sub">
+							<label for="param-width">Width (px)</label>
+							<input type="number" id="param-width" placeholder="Auto" class="num-input">
+						</div>
+						<div class="input-sub">
+							<label for="param-height">Height (px)</label>
+							<input type="number" id="param-height" placeholder="Auto" class="num-input">
+						</div>
+					</div>
+					<div class="checkbox-row mt-3">
+						<input type="checkbox" id="param-aspect" checked class="checkbox-input">
+						<label for="param-aspect">Maintain Aspect Ratio</label>
+					</div>
+				</div>
+				<div class="panel-actions">
+					<button id="btn-execute-all" class="btn btn-primary btn-full ripple">Compress All Assets</button><button id="btn-reset-all" class="btn btn-secondary btn-full">Reset Workflow</button>
+				</div>
+			</form>
+		</aside>
+		<div class="processing-dashboard">
+			<div class="dashboard-header glass-card">
+				<div class="stats-text">
+					<h3>
+						Queue Overview
+					</h3>
+					<p id="queue-summary">
+						0 files pending action
+					</p>
+				</div>
+				<button id="btn-download-all" class="btn btn-success hidden">Download All (ZIP)</button>
+			</div>
+			<div id="pipeline-list" class="pipeline-list">
+			</div>
+		</div>
+	</div>
+</section>
+<section id="comparison-stage" class="comparison-stage container hidden">
+	<div class="glass-card">
+		<div class="stage-header">
+			<h2>
+				Visual Split Inspector
+			</h2>
+			<button id="btn-close-inspector" class="btn-close" aria-label="Close Comparison Stage">&times;</button>
+		</div>
+		<div class="split-slider-container" id="split-view-box">
+			<div class="image-layer layer-before">
+				<img id="inspect-before-img" src="" alt="Source asset state"><span class="view-tag tag-left">Original</span>
+			</div>
+			<div class="image-layer layer-after" id="inspect-after-layer">
+				<img id="inspect-after-img" src="" alt="Compressed asset state"><span class="view-tag tag-right">Compressed</span>
+			</div>
+			<div class="slider-handle" id="inspect-handle" role="slider" aria-label="Image display separator slider handle" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+				<div class="handle-line">
+				</div>
+				<div class="handle-button">
+					<svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 5l-7 7 7 7M13 19l7-7-7-7" /></svg>
+				</div>
+				<div class="handle-line">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</main><script>
+	class CompressionEngine{static async processImage(e,t,n){return new Promise((s,i)=>{const o=new FileReader;o.onload=d=>{const a=new Image;a.onload=()=>{try{n(30);const r=document.createElement("canvas"),l=r.getContext("2d");let h=a.width,g=a.height;t.resizeEnabled&&(t.width&&t.height?(h=t.width,g=t.height):t.width?(h=t.width,g=t.maintainAspect?Math.round(a.height*(t.width/a.width)):a.height):t.height&&(g=t.height,h=t.maintainAspect?Math.round(a.width*(t.height/a.height)):a.width)),r.width=h,r.height=g,l&&(t.format==="image/jpeg"&&(l.fillStyle="#FFFFFF",l.fillRect(0,0,h,g)),l.drawImage(a,0,0,h,g)),n(70);let p=t.format==="auto"?e.type:t.format;p!=="image/jpeg"&&p!=="image/png"&&p!=="image/webp"&&(p="image/jpeg");const u=t.quality/100;r.toBlob(c=>{c?(n(100),s(c)):i(new Error("Canvas export empty error state reached"))},p,u)}catch(r){i(r)}},a.onerror=()=>i(new Error("Asset decoding image element generation fault")),a.src=d.target.result},o.onerror=()=>i(new Error("File stream physical structural read fault")),o.readAsDataURL(e)})}}class UI{static showToast(e,t="info"){const n=document.getElementById("toast-container");if(!n)return;const s=document.createElement("div");s.className=`toast-msg toast-${t}`,s.textContent=e,n.appendChild(s),setTimeout(()=>{s.style.opacity="0",s.style.transform="translateY(20px)",setTimeout(()=>s.remove(),300)},4e3)}static renderPipelineCard(e,t,n){const s=document.createElement("div"),i=UI.escapeHTML(e.file.name);s.className="pipeline-card",s.id=`asset-node-${e.id}`;const o=(e.file.size/1024/1024).toFixed(2),d=e.file.name.split(".").pop().toUpperCase();s.innerHTML=`<div class="card-main-row"><img class="thumb-preview" id="thumb-preview-${e.id}" src="#" alt="Asset thumb"><div class="asset-meta"><div class="asset-title" title="${i}">${i}</div><div class="asset-info-row"><span>Format: <strong>${d}</strong></span><span>Weight: <strong>${o} MB</strong></span><span id="dim-node-${e.id}">Dim: --</span></div></div><div class="card-actions-area"><button class="btn btn-secondary btn-inspect hidden" id="btn-inspect-${e.id}">Inspect</button><a class="btn btn-success btn-download hidden" id="btn-dl-${e.id}">Download</a><button class="btn btn-danger btn-remove" id="btn-rm-${e.id}">Remove</button></div></div><div class="progress-container" id="prog-wrap-${e.id}"><div class="progress-bar-fill" id="prog-bar-${e.id}"></div></div><div class="results-matrix-box hidden" id="results-matrix-${e.id}"></div>
+	        `,t.appendChild(s);const a=new Image;a.onload=()=>{const r=document.getElementById(`dim-node-${e.id}`);r&&(r.textContent=`Dim: ${a.width}x${a.height}px`);const l=document.getElementById(`thumb-preview-${e.id}`);l&&(l.src=a.src)},a.src=URL.createObjectURL(e.file),document.getElementById(`btn-rm-${e.id}`).addEventListener("click",()=>n.onRemove(e.id)),document.getElementById(`btn-inspect-${e.id}`).addEventListener("click",()=>n.onInspect(e.id))}static updateCardWithResults(e){const t=document.getElementById(`prog-wrap-${e.id}`);t&&t.classList.add("hidden");const n=document.getElementById(`results-matrix-${e.id}`);if(!n||!e.resultBlob)return;const s=e.file.size/1024,i=e.resultBlob.size/1024,o=(s/i).toFixed(1),d=Math.max(0,Math.round((s-i)/s*100));n.innerHTML=`<div class="metric-tile"><span>Optimized Size</span><strong>${i.toFixed(1)} KB</strong></div><div class="metric-tile saved-accent"><span>Size Savings</span><strong>-${d}%</strong></div><div class="metric-tile"><span>Ratio</span><strong>${o}:1</strong></div><div class="metric-tile"><span>Status</span><strong style="color:var(--success-color)">Success</strong></div>
+	        `,n.classList.remove("hidden");const a=document.getElementById(`btn-inspect-${e.id}`);a&&a.classList.remove("hidden");const r=document.getElementById(`btn-dl-${e.id}`);r&&(r.href=URL.createObjectURL(e.resultBlob),r.download=UI.generateFileName(e.file.name,e.resultBlob.type),r.classList.remove("hidden"))}static escapeHTML(e){return String(e).replace(/[&<>"']/g,t=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[t])}static generateFileName(e,t){const n=e.substring(0,e.lastIndexOf("."))||e;let s="jpg";return t==="image/png"&&(s="png"),t==="image/webp"&&(s="webp"),`${n}-optimized.${s}`}}class WorkspaceApp{constructor(){this.pipelineItems=[],this.activeTheme="dark",this.initDOMReferences(),this.bindEvents(),this.setupInteractivity()}initDOMReferences(){this.dropZone=document.getElementById("dropzone"),this.fileInput=document.getElementById("file-input"),this.workspaceLayout=document.getElementById("workspace-layout"),this.pipelineList=document.getElementById("pipeline-list"),this.queueSummary=document.getElementById("queue-summary"),this.btnExecuteAll=document.getElementById("btn-execute-all"),this.btnResetAll=document.getElementById("btn-reset-all"),this.btnDownloadAll=document.getElementById("btn-download-all"),this.themeToggle=document.getElementById("theme-toggle"),this.qualitySlider=document.getElementById("param-quality"),this.qualityVal=document.getElementById("quality-val"),this.toggleResize=document.getElementById("toggle-resize"),this.resizeSuboptions=document.getElementById("resize-suboptions"),this.comparisonStage=document.getElementById("comparison-stage"),this.inspectBeforeImg=document.getElementById("inspect-before-img"),this.inspectAfterImg=document.getElementById("inspect-after-img"),this.inspectAfterLayer=document.getElementById("inspect-after-layer"),this.inspectHandle=document.getElementById("inspect-handle"),this.splitViewBox=document.getElementById("split-view-box"),this.btnCloseInspector=document.getElementById("btn-close-inspector")}bindEvents(){this.themeToggle.addEventListener("click",()=>this.switchTheme()),this.dropZone.addEventListener("click",()=>this.fileInput.click()),this.fileInput.addEventListener("change",e=>this.handleFileBlobs(e.target.files)),this.dropZone.addEventListener("dragover",e=>{e.preventDefault(),this.dropZone.classList.add("drag-over")}),this.dropZone.addEventListener("dragleave",()=>this.dropZone.classList.remove("drag-over")),this.dropZone.addEventListener("drop",e=>{e.preventDefault(),this.dropZone.classList.remove("drag-over"),this.handleFileBlobs(e.dataTransfer.files)}),window.addEventListener("paste",e=>{e.clipboardData&&e.clipboardData.files.length>0&&(this.handleFileBlobs(e.clipboardData.files),UI.showToast("Image pasted from clipboard.","success"))}),this.qualitySlider.addEventListener("input",e=>this.qualityVal.textContent=`${e.target.value}%`),this.toggleResize.addEventListener("change",e=>{this.resizeSuboptions.classList.toggle("hidden-sub",!e.target.checked)}),this.btnExecuteAll.addEventListener("click",()=>this.compressAllPipelineItems()),this.btnResetAll.addEventListener("click",()=>this.clearWorkspacePipelineState()),this.btnDownloadAll.addEventListener("click",()=>this.triggerGlobalZipDownloadFallback()),this.btnCloseInspector.addEventListener("click",()=>this.comparisonStage.classList.add("hidden")),this.dropZone.addEventListener("keydown",e=>{(e.key==="Enter"||e.key===" ")&&this.fileInput.click()})}setupInteractivity(){document.documentElement.setAttribute("data-theme",this.activeTheme),document.body.addEventListener("click",n=>{const s=n.target.closest(".ripple");if(s){const i=document.createElement("span"),o=Math.max(s.clientWidth,s.clientHeight),d=s.getBoundingClientRect();i.style.width=i.style.height=`${o}px`,i.style.left=`${n.clientX-d.left-o/2}px`,i.style.top=`${n.clientY-d.top-o/2}px`,i.classList.add("ripple-effect"),s.appendChild(i),setTimeout(()=>i.remove(),600)}});let e=!1;const t=n=>{const s=this.splitViewBox.getBoundingClientRect();let i=(n-s.left)/s.width;i<0&&(i=0),i>1&&(i=1);const o=i*100;this.inspectAfterLayer.style.width=`${o}%`,this.inspectHandle.style.left=`${o}%`,this.inspectHandle.setAttribute("aria-valuenow",Math.round(o))};this.inspectHandle.addEventListener("mousedown",()=>e=!0),window.addEventListener("mouseup",()=>e=!1),window.addEventListener("mousemove",n=>{e&&t(n.clientX)}),this.inspectHandle.addEventListener("touchstart",()=>e=!0),window.addEventListener("touchend",()=>e=!1),window.addEventListener("touchmove",n=>{e&&n.touches[0]&&t(n.touches[0].clientX)})}switchTheme(){this.activeTheme=this.activeTheme==="dark"?"light":"dark",document.documentElement.setAttribute("data-theme",this.activeTheme),UI.showToast(`Switched to standard ${this.activeTheme} theme view.`,"info")}handleFileBlobs(e){if(!e||e.length===0)return;let t=0;const n=["image/jpeg","image/png","image/webp"],s=50*1024*1024;Array.from(e).forEach(i=>{if(!n.includes(i.type)){UI.showToast(`Invalid format omitted: ${i.name}`,"error");return}if(i.size>s){UI.showToast(`File scale profile bounds exceeded (>50MB): ${i.name}`,"error");return}const o={id:Date.now()+Math.random().toString(36).substr(2,5),file:i,resultBlob:null};this.pipelineItems.push(o),t++,UI.renderPipelineCard(o,this.pipelineList,{onRemove:d=>this.removePipelineAssetItem(d),onInspect:d=>this.launchVisualInspectorStage(d)})}),t>0&&(this.workspaceLayout.classList.remove("hidden"),this.syncQueueMetadataTotals(),UI.showToast(`Added ${t} assets to processing array.`,"success"))}removePipelineAssetItem(e){this.pipelineItems=this.pipelineItems.filter(n=>n.id!==e);const t=document.getElementById(`asset-node-${e}`);t&&t.remove(),this.syncQueueMetadataTotals(),this.pipelineItems.length===0&&(this.workspaceLayout.classList.add("hidden"),this.comparisonStage.classList.add("hidden"))}clearWorkspacePipelineState(){this.pipelineItems=[],this.pipelineList.innerHTML="",this.workspaceLayout.classList.add("hidden"),this.comparisonStage.classList.add("hidden"),this.btnDownloadAll.classList.add("hidden"),this.syncQueueMetadataTotals(),UI.showToast("Workspace clearing complete.","info")}syncQueueMetadataTotals(){const e=this.pipelineItems.filter(t=>!t.resultBlob).length;e>0?(this.queueSummary.textContent=`${e} assets staging compilation`,this.btnDownloadAll.classList.add("hidden")):this.pipelineItems.length>0?(this.queueSummary.textContent="All batch assets successfully processed.",this.btnDownloadAll.classList.remove("hidden")):this.queueSummary.textContent="Queue configuration block completely empty."}async compressAllPipelineItems(){const e=parseInt(this.qualitySlider.value,10),t=document.getElementById("param-format").value,n=this.toggleResize.checked,s=parseInt(document.getElementById("param-width").value,10)||null,i=parseInt(document.getElementById("param-height").value,10)||null,o=document.getElementById("param-aspect").checked,d={quality:e,format:t,resizeEnabled:n,width:s,height:i,maintainAspect:o};UI.showToast("Batch optimization processing executed...","info");for(const a of this.pipelineItems){if(a.resultBlob)continue;const r=document.getElementById(`prog-bar-${a.id}`);try{a.resultBlob=await CompressionEngine.processImage(a.file,d,l=>{r&&(r.style.width=`${l}%`)}),UI.updateCardWithResults(a)}catch(l){console.error(l),UI.showToast(`Asset conversion processing error state layout: ${a.file.name}`,"error")}}this.syncQueueMetadataTotals(),UI.showToast("Batch pipeline sweep complete.","success")}launchVisualInspectorStage(e){const t=this.pipelineItems.find(n=>n.id===e);!t||!t.resultBlob||(this.inspectBeforeImg.src=URL.createObjectURL(t.file),this.inspectAfterImg.src=URL.createObjectURL(t.resultBlob),this.inspectAfterLayer.style.width="50%",this.inspectHandle.style.left="50%",this.comparisonStage.classList.remove("hidden"),this.comparisonStage.scrollIntoView({behavior:"smooth"}))}async triggerGlobalZipDownloadFallback(){const e=this.pipelineItems.filter(s=>s.resultBlob);if(e.length===0)return;if(e.length===1){const s=e[0];this.saveBlob(s.resultBlob,UI.generateFileName(s.file.name,s.resultBlob.type));return}UI.showToast("Creating ZIP archive...","info");const t=new Set,n=[];for(const s of e){let i=UI.generateFileName(s.file.name,s.resultBlob.type),o=1;for(;t.has(i);)i=i.replace(/(-\d+)?(\.[^.]+)$/,`-${o++}$2`);t.add(i),n.push({name:i,data:new Uint8Array(await s.resultBlob.arrayBuffer())})}this.saveBlob(buildZip(n),"compressed-images.zip"),UI.showToast("ZIP downloaded.","success")}saveBlob(e,t){const n=document.createElement("a"),s=URL.createObjectURL(e);n.href=s,n.download=t,document.body.appendChild(n),n.click(),document.body.removeChild(n),setTimeout(()=>URL.revokeObjectURL(s),5e3)}}const CRC_TABLE=(()=>{const m=new Uint32Array(256);for(let e=0;e<256;e++){let t=e;for(let n=0;n<8;n++)t=t&1?3988292384^t>>>1:t>>>1;m[e]=t>>>0}return m})();function crc32(m){let e=4294967295;for(let t=0;t<m.length;t++)e=CRC_TABLE[(e^m[t])&255]^e>>>8;return(e^4294967295)>>>0}function buildZip(m){const e=new TextEncoder,t=[],n=[];let s=0;const i=new Date,o=i.getHours()<<11|i.getMinutes()<<5|i.getSeconds()>>1,d=i.getFullYear()-1980<<9|i.getMonth()+1<<5|i.getDate();for(const l of m){const h=e.encode(l.name),g=crc32(l.data),p=l.data.length,u=new DataView(new ArrayBuffer(30));u.setUint32(0,67324752,!0),u.setUint16(4,20,!0),u.setUint16(6,2048,!0),u.setUint16(8,0,!0),u.setUint16(10,o,!0),u.setUint16(12,d,!0),u.setUint32(14,g,!0),u.setUint32(18,p,!0),u.setUint32(22,p,!0),u.setUint16(26,h.length,!0),u.setUint16(28,0,!0),t.push(new Uint8Array(u.buffer),h,l.data);const c=new DataView(new ArrayBuffer(46));c.setUint32(0,33639248,!0),c.setUint16(4,20,!0),c.setUint16(6,20,!0),c.setUint16(8,2048,!0),c.setUint16(10,0,!0),c.setUint16(12,o,!0),c.setUint16(14,d,!0),c.setUint32(16,g,!0),c.setUint32(20,p,!0),c.setUint32(24,p,!0),c.setUint16(28,h.length,!0),c.setUint32(42,s,!0),n.push(new Uint8Array(c.buffer),h),s+=30+h.length+p}const a=n.reduce((l,h)=>l+h.length,0),r=new DataView(new ArrayBuffer(22));return r.setUint32(0,101010256,!0),r.setUint16(8,m.length,!0),r.setUint16(10,m.length,!0),r.setUint32(12,a,!0),r.setUint32(16,s,!0),new Blob([...t,...n,new Uint8Array(r.buffer)],{type:"application/zip"})}document.addEventListener("DOMContentLoaded",()=>{window.AppInstance=new WorkspaceApp});
+</script>
+</body>
+</html>
